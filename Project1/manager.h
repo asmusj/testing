@@ -9,7 +9,7 @@ character of the line and send the command to the appropriate container.
 
 #include <iostream>
 #include <fstream>
-#include "objectcontainer.h"
+#include "objectcontroller.h"
 #include "factory.h"
 
 
@@ -21,15 +21,17 @@ class Manager {
 	static const int GENRE_TYPES = 3;
 
 public:
-
+	~Manager();
+	void print(ostream & output);
+	void printContainer(ostream &, ObjectController &);
 	void intakeDataFromFile(ifstream & inputfile);
 	//bool borrowDVD(ifstream input);
 	//bool returnDVD(string dvdName, string custFullName);
 
 protected:
 	Object* emptyObject;
-	ObjectContainer* containerArray [(USER_TYPES + GENRE_TYPES) * 2 + 1];
-	Factory* objFactory;
+	ObjectController containerArray;
+	Factory objFactory;
 };
 
 #endif

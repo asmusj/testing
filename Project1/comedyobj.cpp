@@ -39,7 +39,7 @@ bool ComedyObj::operator<(const Object & rhs)const {
 	}
 }
 
-Object* ComedyObj::create(){
+Object* ComedyObj::create()const {
 	return new ComedyObj();
 }
 
@@ -51,4 +51,12 @@ void ComedyObj::setData(ifstream& intake){
 	getline(intake, title, ',');
 
 	intake >> year;
+}
+
+ostream& operator<<(ostream& output, const ComedyObj& toWrite){
+	output << toWrite.quantity << "\t" << 10 - toWrite.quantity << "\t"
+		<< toWrite.title << "\t" << "\t" << toWrite.director << "\t" << toWrite.year
+			 << endl;
+	return output;
+
 }

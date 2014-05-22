@@ -1,4 +1,4 @@
-#include "factory.h";
+#include "factory.h"
 
 Factory::Factory(){
 	objFactory[0] = new ClassicObj();
@@ -7,7 +7,11 @@ Factory::Factory(){
 }
 
 Factory::~Factory(){
-	delete [] objFactory;
+	for (int i = 0; i < FACTSIZE; i++){
+		delete objFactory[i];
+		objFactory[i] = NULL;
+	}
+
 }
 
 int Factory::hash(char ch){
